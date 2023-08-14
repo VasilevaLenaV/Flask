@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <title>{% block title %}{% endblock %} - Интернет-магазин</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <!-- Шапка сайта -->
+        <h1>Интернет-магазин</h1>
+        <nav>
+            <!-- Меню навигации -->
+            <ul>
+                <li><a href="/">Главная</a></li>
+                <li><a href="/categories">Категории</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- Контент страницы -->
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <!-- Подвал сайта -->
+        <p>&copy; 2023 Интернет-магазин. Все права защищены.</p>
+    </footer>
+</body>
+</html>
