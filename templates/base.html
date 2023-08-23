@@ -1,0 +1,46 @@
+<html>
+    <head>
+      <title>{% block title %}{{ super() }} - Index{% endblock %}</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    </head>
+    <body>
+    <header>
+        <!-- Шапка сайта -->
+         <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{{ url_for('index')}}">STORE</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Главная</a></li>
+      <li><a href="/categories">Категории</a></li>
+      <li><a href="#">О нас</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        {% if not current_user.is_authenticated %}
+      <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        {% else %}
+      <li><a href="/profile"><span class="glyphicon glyphicon-user"></span> {{current_user.get_name()}}</a></li>
+      <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        {% endif %}
+    </ul>
+  </div>
+</nav>
+    </header>
+    <main>
+        <!-- Контент страницы -->
+        {% block content %}{% endblock %}
+
+    </main>
+    <footer>
+        <!-- Подвал сайта -->
+        <p>&copy; 2023 Интернет-магазин. Все права защищены.</p>
+    </footer>
+    </body>
+</html>
